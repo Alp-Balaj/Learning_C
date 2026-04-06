@@ -4,6 +4,7 @@
 #define OUT 0;
 
 int main(){
+    // flag to represent if I'm in a word momentarily.
     int inWord = OUT;
     char buffer[1000];
 
@@ -34,6 +35,7 @@ int main(){
     // Loop through this shit again, to find out the length of the words, to fill out the array.
     j = 0;
     charCounter = 0;
+    // Same flag me kallxu if I'm currently in a word or not...
     inWord = OUT;
     for (i = 0; i < len; i++){
         // Read from the buffer.
