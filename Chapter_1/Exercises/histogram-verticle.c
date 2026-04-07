@@ -57,23 +57,26 @@ int main(){
     // ...
 
     printf("\n");
-
+    // start top to bottom, longest word and then compare it to the wordIndexer to see if I should add an X (in this case) for that row or not.
     for(j = longestWord; j > 0; j--){
         printf("%3d |   ", j);
         for(i = 0; i < wordCounter; i++){
-            if(wordIndexer[i] >= j)
-                printf("X   ");
-            else
-                printf("    ");
-            if(i == wordCounter - 1)
-                printf("\n");
+            printf(wordIndexer[i] >= j? "X   " : "    ");
         }
+        printf("\n");
     }
 
+    // horizontal line to seperate the values from the indexes
+    printf("    +---");
+    for(i = 0; i < wordCounter; i++)
+        printf("----");
+
+    printf("\n");
+
+    // printing indexes because why not...
     printf("    | ");
-    for(i = 0; i < wordCounter; i++){
+    for(i = 0; i < wordCounter; i++)
         printf("%3d ", i + 1);
-    }
 
     printf("\n");
 }
