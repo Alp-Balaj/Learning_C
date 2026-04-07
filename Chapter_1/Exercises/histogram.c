@@ -56,14 +56,10 @@ int main(){
         }
     }
 
-    j = 0;
     // This should be the printing function... if this shit works, and the data is correct beforehand.
     for(i = 0; i < wordCounter; i++){
         printf("%d:\t", i+1);
 
-        if(wordIndexer[i] == 0)
-            printf("\n");
-        // printf("Word nr: %d,\twordIndexerValue: [ %d ]\n", i, wordIndexer[i]);
         for (j = 0; j < wordIndexer[i]; j++){
             if(j == wordIndexer[i] - 1)
                 printf("-\n");
