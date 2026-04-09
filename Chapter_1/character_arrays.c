@@ -2,6 +2,10 @@
 
 #define MAXLINE 1000
 
+// In functions where arrays are into play, C doesn't work as pass by value anymore, instead yes... the pointer to the first item in the array is passed by value.
+// So a copy of the pointers value is passed down to the other function.
+// But something to keep in mind is that the array itself now is exposed to the function, so the real place in memory where the array is can now be modified.
+// So that happens in these two functions below.
 int getLine(char line[], int maxLine);
 void copy(char to[], char from[]);
 
