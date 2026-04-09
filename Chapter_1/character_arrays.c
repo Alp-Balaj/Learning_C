@@ -41,13 +41,15 @@ int getLine(char s[], int lim){
 
     // Qikjo e kqyr nese characteri i fundit saved ne variable a eshte new line, qe me shti ne array
     // Edhe e rrit vleren e i-se one more time
+    // Kjo bohet se munet me ardh empty line veq me ni enter qe nuk i plotson kushtet paraprake me hi n'for loop.
     if(c == '\n'){
         s[i] = c;
         ++i;
     }
 
-    // Masi e rriti edhe ni her ja shtoj ni qisi, qe se di qa bon edhe e kthej what seems to be the length of this line.
+    // '\0' represents the end of the line.
     s[i] = '\0';
+    // Returns the length of the line.
     return i;
 }
 
@@ -55,6 +57,7 @@ void copy(char to[], char from[]){
     int i;
 
     i = 0;
+    // Copies over character by character from the "from" array to the "to" array.
     while((to[i] = from[i]) != '\0')
         ++i;
 }
