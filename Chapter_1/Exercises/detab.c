@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define TABSTOP 8
+#define TABSTOP 4
 #define MAXLINE 1000
 
 char line[MAXLINE];
@@ -27,9 +27,8 @@ int getLine(void){
         && (c = getchar()) != EOF && c != '\n'; i++)
     {
         // if find tab, tab go bye-bye
-        if(c == '\t'){
+        if(c == '\t')
             i = replace(i);
-        }
         else
             line[i] = c;
     }
@@ -47,14 +46,17 @@ int getLine(void){
 int replace(int index){
     int spaces, j;
     // this sees how many spaces have already been added to this column
-    spaces = index % 8;
+    spaces = index % TABSTOP;
 
     // this counts backwards compared to the spaces already existing.
     // 3 spaces existing, it will be adding 5 more spaces counting backwards
-    for(j = 8; spaces <= j; j--){
+    for(j = TABSTOP; spaces < j; j--){
         line[index++] = ' ';
     }
 
+    // -1 because in the last incrementation of the index we pass a spot and we don't give it value.
+    // Therefore when passing back the index where the buffering should continue we continue from the index where the last value was placed, even though we skip that
+    // There has to be a better way to handle this but so be it... for now.
     return index - 1;
 }
 
@@ -66,6 +68,4 @@ void append(void){
         i++;
         stringCount++;
     }
-
-
 }
