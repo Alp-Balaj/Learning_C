@@ -13,6 +13,7 @@ int replace(int index);
 void append(void);
 
 int main(){
+    int counter = 1;
     while(getLine() != 0)
         append();
 
@@ -26,9 +27,8 @@ int getLine(void){
         && (c = getchar()) != EOF && c != '\n'; i++)
     {
         // if find tab, tab go bye-bye
-        if(c == '\t'){
-            i += replace(i);
-        }
+        if(c == '\t')
+            i = replace(i);
         else
             line[i] = c;
     }
@@ -38,21 +38,20 @@ int getLine(void){
         i++;
     }
 
-    printf("line ending at index: %d\n", i);
     line[i] = '\0';
 
     return i;
 }
 
 int replace(int index){
-    int spaces, i;
+    int spaces, j;
 
     // this sees how many spaces have already been added to this column
     spaces = index % 8;
 
     // this counts backwards compared to the spaces already existing.
     // 3 spaces existing, it will be adding 5 more spaces counting backwards
-    for(i = 8; spaces < i; i--)
+    for(j = 8; spaces < j; j--)
         line[index++] = ' ';
 
     printf("index: %d\n", index);
@@ -61,11 +60,16 @@ int replace(int index){
 
 void append(void){
     int i;
-    // extern char line[], formatedString[];
 
     i = 0;
-    while((formatedString[stringCount] = line[i]) != '\0'){
+    // while((formatedString[stringCount] = line[i]) != '\0'){
+    while(i != 45){
+        if(line[i] == '\0')
+            printf("why am i here!?");
+        printf("ch: %c\n", line[i]);
         i++;
         stringCount++;
     }
+
+
 }
